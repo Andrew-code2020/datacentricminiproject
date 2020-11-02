@@ -1,21 +1,29 @@
 {% extends "base.html" %} {% block content %}
 
 <h3 class="light-blue-text text-darken-4 center-align">Add Task</h3>
-
+<!--Select Task Category-->
 <div class="row">
-  <form class="col s12" method="POST" action="">
+  <form class="col s12" method="POST" action="{{url_for ('add_task')}}">
     <div class="row">
       <div class="input-field col s12">
-      <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-        <select id ="category_name" name="category_name" class ="validate" required>
+        <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+        <select
+          id="category_name"
+          name="category_name"
+          class="validate"
+          required
+        >
           <option value="" disabled selected>Choose Category</option>
           {% for category in categories %}
-            <option value="{{category.category_name}}">{{category.category_name}}</option>
+          <option value="{{category.category_name}}">
+            {{category.category_name}}
+          </option>
           {% endfor %}
         </select>
         <label for="category_name">Task Category</label>
       </div>
     </div>
+    <!--Task Name-->
     <div class="row">
       <div class="input-field col s12">
         <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
@@ -31,6 +39,7 @@
         <label for="task_name">Task Name</label>
       </div>
     </div>
+    <!--Task description-->
     <div class="row">
       <div class="input-field col s12">
         <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
@@ -45,7 +54,7 @@
         <label for="task_description">Task Description</label>
       </div>
     </div>
-
+<!--Due Date-->
     <div class="row card-panel grey lighten-5">
       <div class="input-field col s12">
         <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>
@@ -59,7 +68,7 @@
         <label for="due_date">Due Date</label>
       </div>
     </div>
-
+<!--Urgent Slider-->
     <div class="row">
       <div class="input-field-col s12">
         <div class="switch">
@@ -72,6 +81,14 @@
             Is Urgent to protect Fine Gael
           </label>
         </div>
+      </div>
+    </div>
+    <!--Submit Button-->
+    <div class="row">
+      <div class="col s12 center-align">
+        <button class="btn-large light-blue darken-1 text-shadow" type="submit" name="">
+          <i class="fas fa-plus-square right">Add Task</i>
+        </button>
       </div>
     </div>
   </form>
